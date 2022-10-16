@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "nombre": "jghjg",
+    "precio": "66665",
+    "url": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-64.png"
+  },
+  {
+    "id": 2,
+    "nombre": "pedro",
+    "precio": "3243",
+    "url": "https://cdn3.iconfinder.com/data/icons/education-209/64/tube-lab-science-school-64.png"
+  },
+  {
+    "id": 3,
+    "nombre": "uytuyt",
+    "precio": "765765",
+    "url": "uytuyt"
+  },
+  {
+    "id": 4,
+    "nombre": "yutyu",
+    "precio": "7778",
+    "url": "https://cdn3.iconfinder.com/data/icons/education-209/64/tube-lab-science-school-64.png"
+  }
+]

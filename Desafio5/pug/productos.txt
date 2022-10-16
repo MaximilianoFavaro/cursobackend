@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Silla",
+    "price": 2500,
+    "thumbnail": "/foto1"
+  },
+  {
+    "id": 2,
+    "title": "Mesa",
+    "price": 8000,
+    "thumbnail": "/foto2"
+  },
+  {
+    "id": 3,
+    "title": "Lavarropas",
+    "price": 34500,
+    "thumbnail": "/foto3"
+  },
+  {
+    "id": 4,
+    "title": "Ropero",
+    "price": 31000,
+    "thumbnail": "/foto4"
+  }
+]
