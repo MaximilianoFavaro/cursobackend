@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+    body 
+
+       div(style="display:flex; justify-content:center; align-items:center; flex-direction:column;")
+        table(style="display: flex;flex-direction: column; justify-content: center; align-items: center;")
+            thead(style="margin: 10px;")
+                th(scope='col' style="margin: 10px;") Id
+                th(scope='col' style="margin: 10px;") Nombre
+                th(scope='col' style="margin: 10px;") Precio
+                th(scope='col' style="margin: 10px;") URL    
+            tbody(style="margin: 10px;")
+                each product in productos
+                    tr
+                        th(style="margin: 10px;" scope="row") #{product.id}
+                        td(style="margin: 10px;") #{product.title}
+                        td(style="margin: 10px;") #{product.price}
+                        td(style="margin: 10px;")
+                            img(src=product.thumbnail alt="img" width="20px" height="20px")
+                
+        div 
+            a(href="/") Volver al formulario 

@@ -22,5 +22,17 @@
     "nombre": "yutyu",
     "precio": "7778",
     "url": "https://cdn3.iconfinder.com/data/icons/education-209/64/tube-lab-science-school-64.png"
+  },
+  {
+    "id": 5,
+    "nombre": "77",
+    "precio": "yut",
+    "url": "https://cdn3.iconfinder.com/data/icons/education-209/64/tube-lab-science-school-64.png"
+  },
+  {
+    "id": 6,
+    "nombre": "aoisjuias",
+    "precio": "3289327",
+    "url": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-64.png"
   }
 ]

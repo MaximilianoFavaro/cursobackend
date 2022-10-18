@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+        
+    body 
+       div.mainform(style="display:flex; justify-content:center; align-items:center; flex-direction:column;")
+        form(action="/productos" method="post" style="display:flex; justify-content:center; align-items:flex-start; flex-direction:column;")  
+           label(for="title") Producto 
+           input(type="text" name="title")
+           label(for="price") Precio
+           input(type="text" name="price")
+           label(for="thumbnail") URL 
+           input(type="text" name="thumbnail")
+           button(type="submit") Enviar
+
+        div
+           a(href="/productos") Ver productos

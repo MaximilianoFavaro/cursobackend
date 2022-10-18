@@ -6,14 +6,14 @@
         <th scope='col'style="margin: 10px;">URL</th>
     </thead>
     <tbody style="margin: 10px;">
-        {{#each contenedorProductos}}
+        <% productos.forEach(function(product) { %>
             <tr>
-                <th style="margin: 10px;" scope="row">{{this.id}}</th>
-                <td style="margin: 10px;">{{this.nombre}}</td>
-                <td style="margin: 10px;">{{this.precio}}</td>
-                <td style="margin: 10px;"><img src={{this.url}} alt="img" width="20px" height="20px"/></td>
+                <th style="margin: 10px;" scope="row"><%= product.id %> </th>
+                <td style="margin: 10px;"><%= product.title %></td>
+                <td style="margin: 10px;"><%= product.price %></td>
+                <td style="margin: 10px;"><img src=<%= product.thumbnail %> alt="img" width="20px" height="20px"/></td>
                 
             </tr>
-        {{/each}}
+        <% }); %>
     </tbody>
 </table>

@@ -22,5 +22,17 @@
     "title": "Ropero",
     "price": 31000,
     "thumbnail": "/foto4"
+  },
+  {
+    "id": 5,
+    "nombre": "pok",
+    "precio": "6676",
+    "url": "https://cdn3.iconfinder.com/data/icons/education-209/64/tube-lab-science-school-64.png"
+  },
+  {
+    "id": 6,
+    "title": "iuuy",
+    "price": "666",
+    "thumbnail": "uyt"
   }
 ]
