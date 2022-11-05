@@ -5,7 +5,11 @@ const admin = true;
 const getAllProductos= (async (req,res) => {
         try{
             const allObjects = await productos.getAll()
-            res.send(allObjects)
+            if (allObjects !== -1){
+            res.send(JSON.stringify(allObjects))
+            }else {
+                res.send({ message:'El archivo esta vacio', code:-1})
+            }
         }catch(error){
             console.log(error)
             res.send({
@@ -17,8 +21,8 @@ const getAllProductos= (async (req,res) => {
     
 const getProductosById= (async(req,res)=>{
         try{
-            const {id} = req.params
-            const objectById = await productos.getById(id)
+            const {id} = req.params            
+            const objectById = await productos.getById(parseInt(id))            
             res.send(objectById)
         }catch(error){
             console.log(error);
@@ -32,9 +36,8 @@ const getProductosById= (async(req,res)=>{
  const addProductos=(async (req,res) =>{        
         if(admin){
             try{
-                console.log(req.body)
-                let newProduct = req.body;
-                console.log(newProduct)
+                
+                let newProduct = req.body;                
                 const productosNew = await productos.save(newProduct);
                 res.send(productosNew)
     
@@ -54,7 +57,7 @@ const putProductos = (async(req,res) =>{
             try{
                 const {id}= req.params
                 const newProd = req.body
-                const produtosUpdated = await productos.updateById(id,newProd)
+                const produtosUpdated = await productos.updateById(parseInt(id),newProd)
                 res.send ( {
                     message: 'Producto actualizado',
                     producto: newProd
@@ -74,8 +77,8 @@ const putProductos = (async(req,res) =>{
         if(admin){
             try{
                 const {id}= req.params;
-                const product = await this.fileObject.deleteById(id)
-                res.send('Producto eliminado')
+                const product = await productos.deleteById(parseInt(id))
+                res.send({ message:'Producto eliminado', code:0})
     
             }catch(error){
                 console.log('Error al borrar by id')

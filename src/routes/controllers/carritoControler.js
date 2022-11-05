@@ -28,34 +28,33 @@ const  getCarritoById= async(req,res)=>{
     }
 }
 
-const addCarrito=async (req,res) =>{
+const addCarrito=( async(req,res) =>{
     if(admin){
         try{
-            console.log(req.body)
-            const newProduct = req.body;
-            const productosNew = await carrito.save(newProduct);
-            res.json({
-                message: "Producto creado",
-                response:productosNew
-            })
+            
+            console.log('Entrando a addCarrito')
+            let newCarrito = req.body;  
+            console.log(newCarrito)              
+            const carritoNew = await carrito.save(newCarrito);
+            res.send(carritoNew)
 
         }catch(error){
             console.log(error)
         }
     }else{
-        res.status(404).message({
+        res.send({
             error: -1,
             message: 'Error en la ruta /api/productos conel metodo POST no autorizado'
         })
     }
-}
+})
 
 const putCarrito = async(req,res) =>{
     if(this.admin){
         try{
             const {id}= req.params
             const newProd = req.body
-            const produtosUpdated = await carrito.updateById(id,newProd)
+            const produtosUpdated = await carrito.updateById(parseInt(id),newProd)
             res.send ( {
                 message: 'Carrito actualizado',
                 carrito: newProd
@@ -75,8 +74,9 @@ const  deleteCarritoById = async(req,res)=>{
     if(admin){
         try{
             const {id}= req.params;
-            const product = await carrito.deleteById(id)
-            res.send('Producto eliminado')
+            const product = await carrito.deleteById(parseInt(id))
+            const getAllCarrito= await carrito.getAll()
+            res.send(getAllCarrito)
 
         }catch(error){
             console.log('Error al borrar by id')
@@ -88,13 +88,14 @@ const  deleteCarritoById = async(req,res)=>{
 const getNestedCarrito = async(req,res)=>{
     try{
         const {id} = req.params
-        const allObjects = await carrito.getById(id)
-        const [{productos}] = allObjects
+        const allObjects = await carrito.getById(parseInt(id))
+        console.log(allObjects)        
 
-        res.send(productos)
+        res.send(allObjects.productos)
     }
     catch(error){
-        console.log('Error al buscar objetos anidados')
+        console.log(error)
+        res.send({message:'Error al buscar productos', code:-1})
     }
 
 }
@@ -102,13 +103,17 @@ const getNestedCarrito = async(req,res)=>{
 const addNestedCarrito = async(req,res) => {
     try{
         const {id} = req.params
-        const allObjects= await carrito.getById(id)
-        const [{productos}] = allObjects
+        const allObjects= await carrito.getById(parseInt(id))
+        const productos = allObjects.productos
+        console.log('Al obtener todos los productos desde getById '+JSON.stringify(allObjects.productos))
         const prodLen = productos.length
-        productos[prodLen+1]=req.body
-        allObjects.productos = productos
+        console.log('Long productos: '+prodLen)
+        
+        productos[prodLen]=req.body
+        
+        allObjects.productos = productos        
         await carrito.updateById(id,allObjects)
-        const updatedObject = await carrito.getById(id)
+        const updatedObject = await carrito.getById(parseInt(id))
         res.send(updatedObject)
 
     }catch{
@@ -121,9 +126,9 @@ const deleteNestedCarrito= async(req,res)=>{
         const{id} = req.params
         const{id_prod}=req.params
 
-        const allObjects=await carrito.getById(id)
-        const [{productos}]=allObjects
-        const newNestedObject = productos.filter(item => item.id !==id_prod)
+        const allObjects=await carrito.getById(parseInt(id))
+        const productos=allObjects.productos
+        const newNestedObject = productos.filter(item => item.id !==parseInt(id_prod))
         allObjects.productos = newNestedObject
         const resp=await carrito.updateById(id,allObjects)
 

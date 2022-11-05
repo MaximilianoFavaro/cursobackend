@@ -28,5 +28,8 @@ router.post('/api/carrito/:id/productos',addNestedCarrito);
 //delete un producto de un carrito
 router.delete('/api/carrito/:id/productos/:id_prod',deleteNestedCarrito);
 
+// --------- control rutas invalidas ---------------------
+
+
 
 export {router}

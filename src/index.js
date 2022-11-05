@@ -7,9 +7,16 @@ dotenv.config()
 
 const app = express()
 
-app.listen(process.env.PORT,console.log('Escuchando en 8080'));
+app.listen(process.env.PORT,console.log('Escuchando en puerto: '+process.env.PORT));
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.use('/',router)
+
+app.use('*', async(req,res)=>{
+    res.json({
+        error:-1,
+        descripcion:'La ruta solicitada es invalida'
+    })
+})
